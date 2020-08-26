@@ -1,20 +1,46 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { motion, AnimatePresence } from "framer-motion";
 
 const Cailloux = ({ className }) => {
+  const containerVariants = {
+    hidden: {
+      opacity: 0,
+    },
+    visible: {
+      opacity: 0.5,
+      transition: {
+        duration: 60,
+      },
+    },
+    exit: {
+      opacity: 0,
+      transition: { duration: 2 },
+    },
+  };
   return (
     <div className={className}>
       cailloux
       <Link to="/">
         <button>retour au début</button>
       </Link>
-      <video autoPlay>
-        <source
-          src="https://firebasestorage.googleapis.com/v0/b/esquif-f53eb.appspot.com/o/cabane.m4v?alt=media&token=580bcc3d-b96e-47be-ad53-9d3a45035d3d"
-          type="video/mp4"
-        ></source>
-      </video>
+      <AnimatePresence>
+        <motion.div
+          className="text"
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+          exit="exit"
+        >
+          <p>J’aime bien ici</p>
+          <p>C’est tranquille ici</p>
+          <p>
+            L’herbe est douce sous les pieds <br />
+            et il y a de la place pour jouer
+          </p>
+        </motion.div>
+      </AnimatePresence>
     </div>
   );
 };
@@ -25,7 +51,13 @@ export default styled(Cailloux)`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  video {
-    width: 100vw;
+  .text {
+    font-family: ten-oldstyle, serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 12px;
+    width: 90%;
+    margin-top: 50px;
+    text-align: center;
   }
 `;
