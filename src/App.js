@@ -1,26 +1,33 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import { Route, Switch, useLocation } from "react-router-dom";
+import Intro from "./Components/Intro";
+import Listen from "./Components/Listen";
+import Cailloux from "./Components/Cailloux";
 
-function App() {
+// style
+import styled from "styled-components";
+import GlobalStyle from "./theme/GlobalStyle";
+
+function App({ className }) {
+  const location = useLocation();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Switch location={location} key={location.key}>
+        <Route path="/ecoute">
+          <Listen />
+        </Route>
+        <Route path="/cailloux">
+          <Cailloux />
+        </Route>
+        <Route path="/">
+          <Intro />
+        </Route>
+      </Switch>
+      <GlobalStyle />
+    </>
   );
 }
 
-export default App;
+export default styled(App)``;
