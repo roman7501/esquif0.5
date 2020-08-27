@@ -45,6 +45,11 @@ const dataLocations = {
       latitude: "48.835952",
       longitude: "2.436063",
     },
+    {
+      name: "test",
+      latitude: "48.850519",
+      longitude: "2.389043",
+    },
   ],
 };
 

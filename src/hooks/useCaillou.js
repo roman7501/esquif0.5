@@ -4,7 +4,7 @@ const useCaillou = () => {
   const [caillou, setCaillou] = useState(0);
   const [displayText, setDisplayText] = useState(false);
   const [isInactive, setIsInactive] = useState(false);
-  const maxPas = 100000;
+  const maxPas = 10;
 
   const caillouClick = () => {
     setCaillou(caillou + 1);

@@ -154,6 +154,7 @@ export default styled(Cailloux)`
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  opacity: 0.5;
   .text {
     margin-top: 300px;
     align-items: center;
