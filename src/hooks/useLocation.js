@@ -46,7 +46,7 @@ const useLocation = (position) => {
   const measure = (la1, lo1, la2, lo2) => {
     // generally used geo measurement function
     var R = 6378.137; // Radius of earth in KM
-    console.log(la1, lo1);
+    console.log(la1, lo1, la2, lo2);
     var dLat = (la2 * Math.PI) / 180 - (la1 * Math.PI) / 180;
     var dLon = (lo2 * Math.PI) / 180 - (lo1 * Math.PI) / 180;
     var a =

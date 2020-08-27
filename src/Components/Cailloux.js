@@ -10,35 +10,27 @@ import useLocation from "../hooks/useLocation";
 // Slider cailloux
 import useCaillou from "../hooks/useCaillou";
 
-const Cailloux = ({ className, text, pathSvg, position, pY, pX, titre }) => {
-  const {
-    caillou,
-    displayText,
-    maxPas,
-    caillouClick,
-    locationCaillou,
-  } = useCaillou();
+const Cailloux = ({
+  className,
+  text,
+  pathSvg,
+  position,
+  pY,
+  pX,
+  titre,
+  caillouClick,
+  displayText,
+  locationCaillou,
+  isInactive,
+  time,
+}) => {
+  const { maxPas } = useCaillou();
 
   //   Calcul location
 
   const { getLocation, distance } = useLocation(position);
 
-  const containerVariants = {
-    hidden: {
-      opacity: 0,
-    },
-    visible: {
-      opacity: 0.5,
-      transition: {
-        duration: 6,
-      },
-    },
-    exit: {
-      opacity: 0,
-      transition: { duration: 2 },
-    },
-  };
-
+  // Effets motions
   const svgVariants = {};
 
   const pathVariants = {
@@ -46,7 +38,7 @@ const Cailloux = ({ className, text, pathSvg, position, pY, pX, titre }) => {
     visible: {
       opacity: 0.7,
       pathLength: 1,
-      transition: { duration: 1, ease: "easeInOut" },
+      transition: { duration: time, ease: "easeInOut" },
     },
   };
 
@@ -61,27 +53,13 @@ const Cailloux = ({ className, text, pathSvg, position, pY, pX, titre }) => {
       },
     },
     exit: {
-      opacity: 0,
+      opacity: 0.4,
       transition: { duration: 2 },
     },
   };
 
   return (
     <div className={className}>
-      <AnimatePresence>
-        {caillou === 1 && displayText === true && (
-          <motion.div
-            className="text"
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-            exit="exit"
-          >
-            {text}
-          </motion.div>
-        )}
-      </AnimatePresence>
-
       <div
         onClick={() => locationCaillou(getLocation)}
         style={{
@@ -112,17 +90,14 @@ const Cailloux = ({ className, text, pathSvg, position, pY, pX, titre }) => {
         <div>
           {distance && (
             <AnimatePresence>
-              {distance > maxPas && (
-                <motion.p
-                  className="distance"
-                  variants={fadeVariants}
-                  initial="hidden"
-                  animate="visible"
-                  exit="exit"
-                >
-                  {distance} pas
-                </motion.p>
-              )}
+              <motion.p
+                className="distance"
+                variants={fadeVariants}
+                initial="hidden"
+                animate="visible"
+              >
+                {distance} pas
+              </motion.p>
             </AnimatePresence>
           )}
         </div>
@@ -134,6 +109,8 @@ const Cailloux = ({ className, text, pathSvg, position, pY, pX, titre }) => {
             top: `${pY}px`,
             right: `${pX}px`,
             display: distance && distance < maxPas ? "block" : "none",
+
+            pointerEvents: isInactive ? "none" : "auto",
           }}
           variants={fadeVariants}
           initial="hidden"
@@ -163,7 +140,6 @@ const Cailloux = ({ className, text, pathSvg, position, pY, pX, titre }) => {
             variants={fadeVariants}
             initial="hidden"
             animate="visible"
-            exit="exit"
           >
             {titre}
           </motion.p>
@@ -179,10 +155,12 @@ export default styled(Cailloux)`
   align-items: center;
   flex-direction: column;
   .text {
+    margin-top: 300px;
+    align-items: center;
     font-family: ten-oldstyle, serif;
     font-weight: 400;
     font-style: normal;
-    font-size: 12px;
+    font-size: 14px;
     width: 90%;
     text-align: center;
   }

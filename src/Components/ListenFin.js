@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -26,7 +25,7 @@ const Listen = ({ className }) => {
   return (
     <div className={className}>
       <button className="ecoute" onClick={() => setIsPlay(true)}>
-        écoute moi sur le banc
+        écoute moi en marchant sur le chemin
       </button>
       {isPlay && (
         <div>
@@ -34,19 +33,18 @@ const Listen = ({ className }) => {
             autoplay="true"
             src="https://firebasestorage.googleapis.com/v0/b/esquif-f53eb.appspot.com/o/Orchestre%20Lamoureux%20-%2009%20-%20Pocket%20Piano%20Orchestral%20Version.mp3?alt=media&token=e066c44a-fbae-4521-803b-18350cca469c"
           ></audio>
-          <Link to="/cailloux">
-            <AnimatePresence>
-              <motion.button
-                className="caillou"
-                variants={fadeVariants}
-                initial="hidden"
-                animate="visible"
-                exit="exit"
-              >
-                cailloux (appuie dessus)
-              </motion.button>
-            </AnimatePresence>
-          </Link>
+
+          <AnimatePresence>
+            <motion.button
+              className="caillou"
+              variants={fadeVariants}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+            >
+              fin du premier esquif
+            </motion.button>
+          </AnimatePresence>
         </div>
       )}
     </div>

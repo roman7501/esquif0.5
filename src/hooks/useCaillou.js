@@ -3,16 +3,19 @@ import { useState } from "react";
 const useCaillou = () => {
   const [caillou, setCaillou] = useState(0);
   const [displayText, setDisplayText] = useState(false);
-  const maxPas = 1000;
+  const [isInactive, setIsInactive] = useState(false);
+  const maxPas = 100000;
 
   const caillouClick = () => {
     setCaillou(caillou + 1);
     setDisplayText(true);
-    console.log("caillou :", caillou);
+    setIsInactive(true);
+    console.log("sInactiveve", isInactive);
   };
 
   const locationCaillou = (getLoc) => {
     getLoc();
+    setIsInactive(false);
     setDisplayText(false);
   };
   return {
@@ -22,6 +25,8 @@ const useCaillou = () => {
     maxPas,
     caillouClick,
     locationCaillou,
+    isInactive,
+    setIsInactive,
   };
 };
 
