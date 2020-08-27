@@ -11,6 +11,7 @@ import GlobalStyle from "./theme/GlobalStyle";
 import ListCailloux from "./Components/ListCailloux";
 import First from "./Components/First";
 import ListenFin from "./Components/ListenFin";
+import Chemin from "./Components/Chemin";
 
 function App({ className }) {
   const location = useLocation();
@@ -32,6 +33,9 @@ function App({ className }) {
         </Route>
         <Route path="/fin">
           <ListenFin />
+        </Route>
+        <Route path="/chemin">
+          <Chemin />
         </Route>
         <Route path="/">
           <Intro />

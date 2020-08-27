@@ -14,6 +14,9 @@ const Intro = ({ className }) => {
       <Link to="/listedescailloux">
         <button>liste des cailloux</button>
       </Link>
+      <Link to="/chemin">
+        <button>chemin</button>
+      </Link>
       <Link to="/fin">
         <button>fin</button>
       </Link>
