@@ -2,8 +2,8 @@ const dataLocations = {
   locations: [
     {
       name: "le banc",
-      latitude: "48.488957",
-      longitude: "2.511442",
+      latitude: "48.8394660",
+      longitude: "2.4359628",
     },
     {
       name: "le foyer",
