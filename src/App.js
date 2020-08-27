@@ -3,7 +3,7 @@ import "./App.css";
 import { Route, Switch, useLocation } from "react-router-dom";
 import Intro from "./Components/Intro";
 import Listen from "./Components/Listen";
-import Cailloux from "./Components/Cailloux";
+import Walk from "./Components/Walk";
 
 // style
 import styled from "styled-components";
@@ -19,7 +19,7 @@ function App({ className }) {
           <Listen />
         </Route>
         <Route path="/cailloux">
-          <Cailloux />
+          <Walk />
         </Route>
         <Route path="/">
           <Intro />

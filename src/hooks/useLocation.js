@@ -1,8 +1,7 @@
 import { useState, useEffect } from "react";
-import dataLocations from "../data/dataLocations";
 
-const useLocation = () => {
-  const location = dataLocations.locations[1];
+const useLocation = (position) => {
+  const location = position;
   const [lat1, setLat1] = useState(null);
   const [long1, setLong1] = useState(null);
   const lat2 = location.latitude;
