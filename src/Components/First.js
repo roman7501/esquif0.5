@@ -21,6 +21,10 @@ const First = ({ className }) => {
 };
 
 export default styled(First)`
+  font-family: "Helvetica", "Arial", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 14px;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -35,7 +39,9 @@ export default styled(First)`
     gap: 20px;
   }
   a {
+    font-size: 14px;
     text-decoration: none;
+    color: white;
   }
 
   a:visited {
@@ -45,5 +51,6 @@ export default styled(First)`
     background: transparent;
     border: none;
     color: white;
+    font-size: 14px;
   }
 `;
