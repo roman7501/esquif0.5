@@ -272,7 +272,7 @@ const Walk = ({ className }) => {
             exit="exit"
           >
             M’enfonce Confortable M’étale Dessins avec les doigts Une couronne
-            un château des visages des maisons
+            un château des visages un cadeau un tourbillon
           </motion.p>
         </AnimatePresence>
       )}
