@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { motion, AnimatePresence } from "framer-motion";
+import Walk from "./Walk";
 
 const Listen = ({ className }) => {
-  const [isPlay, setIsPlay] = useState(false);
+  // const [isPlay, setIsPlay] = useState(false);
 
   const fadeVariants = {
     hidden: {
@@ -24,32 +25,26 @@ const Listen = ({ className }) => {
   };
 
   return (
-    <div className={className}>
-      <button className="ecoute" onClick={() => setIsPlay(true)}>
+    <motion.div className={className} variants={fadeVariants}>
+      {/* <button className="ecoute" onClick={() => setIsPlay(true)}>
         écoute moi sur le banc
-      </button>
-      {isPlay && (
-        <div>
-          <audio
+      </button> */}
+      {/* {isPlay && ( */}
+      <div>
+        {/* <audio
             autoPlay={true}
             src="https://firebasestorage.googleapis.com/v0/b/esquif-f53eb.appspot.com/o/debut2.mp3?alt=media&token=1f523b5b-b4fa-43c2-afd5-84a79abbb5ad"
-          ></audio>
-          <Link to="/cailloux">
-            <AnimatePresence>
-              <motion.button
-                className="caillou"
-                variants={fadeVariants}
-                initial="hidden"
-                animate="visible"
-                exit="exit"
-              >
-                cailloux (appuie dessus)
-              </motion.button>
-            </AnimatePresence>
-          </Link>
-        </div>
-      )}
-    </div>
+          ></audio> */}
+        <Link to="/cailloux">
+          <AnimatePresence>
+            <div className="walk">
+              <Walk />
+            </div>
+          </AnimatePresence>
+        </Link>
+      </div>
+      {/* )} */}
+    </motion.div>
   );
 };
 
@@ -71,5 +66,10 @@ export default styled(Listen)`
     background: transparent;
     border: none;
     color: white;
+  }
+  .walk {
+    background: red;
+    min-height: 100vh;
+    width: 100px;
   }
 `;

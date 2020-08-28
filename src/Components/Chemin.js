@@ -20,7 +20,7 @@ const Chemin = ({
     visible: {
       opacity: 0.7,
       pathLength: nextStep,
-      transition: { duration: 30, ease: "easeInOut" },
+      transition: { duration: 1, ease: "easeInOut" },
     },
   };
 

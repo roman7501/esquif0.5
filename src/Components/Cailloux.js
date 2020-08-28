@@ -22,14 +22,22 @@ const Cailloux = ({
   caillou,
 }) => {
   // Effets motions
-  const svgVariants = {};
+  const svgVariants = {
+    hidden: { opacity: 0.7, pathLength: 0 },
+    visible: {
+      opacity: 0.7,
+      pathLength: 1,
+      transition: { duration: 1, ease: "easeInOut" },
+    },
+    exit: { opacity: 0, transition: { duration: 10 } },
+  };
 
   const pathVariants = {
     hidden: { opacity: 0.7, pathLength: 0 },
     visible: {
       opacity: 0.7,
       pathLength: 1,
-      transition: { duration: time, ease: "easeInOut" },
+      transition: { duration: 1, ease: "easeInOut" },
     },
     exit: { opacity: 0, transition: { duration: 10 } },
   };
@@ -38,7 +46,7 @@ const Cailloux = ({
     hidden: { opacity: 0 },
     visible: {
       opacity: 0.7,
-      transition: { delay: 25, duration: 10, ease: "easeInOut" },
+      transition: { delay: 0, duration: 1, ease: "easeInOut" },
     },
   };
 
@@ -46,25 +54,23 @@ const Cailloux = ({
     <div className={className}>
       {index >= caillou && (
         <div>
-          <div
-            onClick={() => agrandirChemin()}
-            style={{
-              position: "fixed",
-              top: `${pY}px`,
-              right: `${pX}px`,
-              display: isClicked && "none",
-            }}
-          >
+          {!isClicked && (
             <AnimatePresence>
               <motion.svg
+                onClick={() => agrandirChemin()}
                 style={{
                   fill: "none",
+                  transform: "scale(0.2)",
+                  position: "relative",
+                  top: `${pY}px`,
+                  right: `${pX}px`,
                 }}
                 variants={svgVariants}
                 initial="hidden"
                 animate="visible"
                 exit="exit"
                 className="caillou"
+                viewBox="-15 -15 100 100"
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <g id="Layer_2" data-name="Layer 2">
@@ -74,34 +80,30 @@ const Cailloux = ({
                 </g>
               </motion.svg>
             </AnimatePresence>
-          </div>
+          )}
+
           {isClicked && (
-            <div
-              style={{
-                position: "fixed",
-                top: `${pY}px`,
-                right: `${pX}px`,
-              }}
-              onClick={assombrirChemin}
-            >
+            <>
               <AnimatePresence>
                 <motion.svg
+                  onClick={assombrirChemin}
                   variants={svgVariants}
                   initial="hidden"
                   animate="visible"
                   style={{
                     fill: "white",
+                    position: "relative",
+                    transform: "scale(0.2)",
+                    top: `${pY}px`,
+                    right: `${pX}px`,
                   }}
                   className="caillou"
+                  viewBox="-15 -15 100 100"
                   xmlns="http://www.w3.org/2000/svg"
                 >
                   <g id="Layer_2" data-name="Layer 2">
                     <g id="Layer_1-2" data-name="Layer 1-2">
-                      <motion.path
-                        variants={pathVariants2}
-                        d={pathSvg}
-                        transform="translate(0 0)"
-                      />
+                      <motion.path variants={pathVariants2} d={pathSvg} />
                     </g>
                   </g>
                 </motion.svg>
@@ -116,7 +118,7 @@ const Cailloux = ({
                   {titre}
                 </motion.p>
               </AnimatePresence>
-            </div>
+            </>
           )}
         </div>
       )}
@@ -137,17 +139,10 @@ export default styled(Cailloux)`
   }
   .caillou {
     stroke: #f6f6f6;
+    stroke-width: 2;
     stroke-miterlimit: 10;
   }
-
   .titre {
-    margin-top: -90px;
-    font-family: "Helvetica", "Arial", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-    font-size: 14px;
-  }
-  .distance {
     margin-top: -90px;
     font-family: "Helvetica", "Arial", sans-serif;
     font-weight: 400;
