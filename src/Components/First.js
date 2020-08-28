@@ -1,8 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import useLocation from "../hooks/useLocation";
+import dataLocations from "../data/dataLocations";
 
 const First = ({ className }) => {
+  const { getLocation, distance } = useLocation(dataLocations.locations[0]);
+  const [isClicked, setIsClicked] = useState(false);
+  const limitDistance = 50000;
+
+  const verifLocation = () => {
+    setIsClicked(true);
+    getLocation();
+  };
   return (
     <div className={className}>
       <p>Rends toi au banc près du Château de Vincennes</p>
@@ -12,9 +22,18 @@ const First = ({ className }) => {
             Où se trouve le banc ?
           </a>
         </button>
-        <Link to="/ecoute">
-          <button>j'y suis</button>
-        </Link>
+        <button onClick={verifLocation}>j'y suis</button>
+        {isClicked && !distance && <p>vérification de ton emplacement...</p>}
+        {distance && distance > limitDistance && (
+          <p>
+            tu n'es pas au bon endroit, le banc se trouve à environ
+            {Math.round(distance)}
+            &nbsp;mètres
+          </p>
+        )}
+        {distance && distance < limitDistance && (
+          <Link to="/ecoute">assis-toi.</Link>
+        )}
       </div>
     </div>
   );
@@ -36,7 +55,10 @@ export default styled(First)`
     bottom: 50px;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    align-items: space-between;
+    position: fixed;
+    bottom: 10px;
+    height: 100px;
   }
   a {
     font-size: 14px;

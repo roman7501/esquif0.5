@@ -30,7 +30,7 @@ const Walk = ({ className }) => {
     visible: {
       opacity: 1,
       transition: {
-        duration: 70,
+        duration: 100,
       },
     },
     exit: {

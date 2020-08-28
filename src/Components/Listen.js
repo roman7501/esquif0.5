@@ -31,8 +31,8 @@ const Listen = ({ className }) => {
       {isPlay && (
         <div>
           <audio
-            autoplay="true"
-            src="https://firebasestorage.googleapis.com/v0/b/esquif-f53eb.appspot.com/o/Debut.mp3?alt=media&token=41d46d7b-440c-443d-97c1-02650e40de6a"
+            autoPlay={true}
+            src="https://firebasestorage.googleapis.com/v0/b/esquif-f53eb.appspot.com/o/debut2.mp3?alt=media&token=1f523b5b-b4fa-43c2-afd5-84a79abbb5ad"
           ></audio>
           <Link to="/cailloux">
             <AnimatePresence>

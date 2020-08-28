@@ -39,9 +39,9 @@ const useLocation = (position) => {
   };
 
   // *Format numbers **
-  const numberWithSpaces = (x) => {
-    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
-  };
+  // const numberWithSpaces = (x) => {
+  //   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+  // };
   // * Calcul distance
   const measure = (la1, lo1, la2, lo2) => {
     // generally used geo measurement function
@@ -59,8 +59,7 @@ const useLocation = (position) => {
     var d = R * c;
     const result = d * 1000;
     setTimeout(() => {
-      const formatResult = numberWithSpaces(Math.round(result)); // meters
-      setDistance(formatResult);
+      setDistance(result);
     }, 1000);
   };
 
