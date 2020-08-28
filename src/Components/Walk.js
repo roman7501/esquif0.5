@@ -8,16 +8,27 @@ import { motion, AnimatePresence } from "framer-motion";
 // Slider cailloux
 import useCaillou from "../hooks/useCaillou";
 
+// Chemin
+import Chemin from "./Chemin";
+import useWalk from "../hooks/useWalk";
+
 import dataLocations from "../data/dataLocations";
 
 const Walk = ({ className }) => {
+  const { caillouClick, locationCaillou } = useCaillou();
+
   const {
-    caillou,
-    caillouClick,
-    locationCaillou,
+    isDraw,
+    initialStep,
+    nextStep,
+    agrandirChemin,
+    assombrirChemin,
     displayText,
     isInactive,
-  } = useCaillou();
+    isClicked,
+    caillou,
+  } = useWalk();
+
   const containerVariants = {
     hidden: {
       opacity: 0,
@@ -35,19 +46,26 @@ const Walk = ({ className }) => {
   };
   return (
     <div className={className}>
+      <Chemin
+        isDraw={isDraw}
+        initialStep={initialStep}
+        nextStep={nextStep}
+        agrandirChemin={agrandirChemin}
+        assombrirChemin={assombrirChemin}
+      />
       {caillou >= 0 && (
         <Cailloux
           index={1}
           titre="le foyer"
           text=" "
           pathSvg="M3.3913,18.49C.8833,23.2136-.4716,28.8946,1.3161,33.9354c1.6568,4.6719,5.7292,8.0728,10,10.59A50.6126,50.6126,0,0,0,48.7285,49.99c4.9021-1.2126,9.9256-3.423,12.5972-7.7083,3.1483-5.05,2.2177-11.6489.1261-17.22C57.2864,13.9664,48.2237,1.6734,35.9818.6106,23.0132-.5152,9.4612,7.0569,3.3913,18.49Z"
-          position={dataLocations.locations[1]}
           pY={100}
           pX={-100}
-          caillouClick={caillouClick}
           displayText={displayText}
-          locationCaillou={locationCaillou}
+          agrandirChemin={agrandirChemin}
+          assombrirChemin={assombrirChemin}
           isInactive={isInactive}
+          isClicked={isClicked}
           time={5}
         />
       )}

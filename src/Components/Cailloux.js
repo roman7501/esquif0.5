@@ -4,32 +4,20 @@ import React from "react";
 import styled from "styled-components";
 import { motion, AnimatePresence } from "framer-motion";
 
-// Location
-import useLocation from "../hooks/useLocation";
-
-// Slider cailloux
-import useCaillou from "../hooks/useCaillou";
-
 const Cailloux = ({
   className,
   text,
   pathSvg,
-  position,
   pY,
   pX,
   titre,
-  caillouClick,
+  assombrirChemin,
   displayText,
-  locationCaillou,
+  agrandirChemin,
   isInactive,
+  isClicked,
   time,
 }) => {
-  const { maxPas } = useCaillou();
-
-  //   Calcul location
-
-  const { getLocation, distance } = useLocation(position);
-
   // Effets motions
   const svgVariants = {};
 
@@ -61,12 +49,13 @@ const Cailloux = ({
   return (
     <div className={className}>
       <div
-        onClick={() => locationCaillou(getLocation)}
+        onClick={() => agrandirChemin()}
         style={{
           position: "fixed",
           top: `${pY}px`,
           right: `${pX}px`,
-          display: distance && distance < maxPas && "none",
+          display: isClicked && "none",
+          pointerEvents: isInactive ? "none" : "auto",
         }}
       >
         <AnimatePresence>
@@ -87,20 +76,6 @@ const Cailloux = ({
             </g>
           </motion.svg>
         </AnimatePresence>
-        <div>
-          {distance && (
-            <AnimatePresence>
-              <motion.p
-                className="distance"
-                variants={fadeVariants}
-                initial="hidden"
-                animate="visible"
-              >
-                {distance} pas
-              </motion.p>
-            </AnimatePresence>
-          )}
-        </div>
       </div>
       <AnimatePresence>
         <motion.div
@@ -108,15 +83,14 @@ const Cailloux = ({
             position: "fixed",
             top: `${pY}px`,
             right: `${pX}px`,
-            display: distance && distance < maxPas ? "block" : "none",
-
+            display: isClicked ? "block" : "none",
             pointerEvents: isInactive ? "none" : "auto",
           }}
           variants={fadeVariants}
           initial="hidden"
           animate="visible"
           exit="exit"
-          onClick={caillouClick}
+          onClick={assombrirChemin}
         >
           <motion.svg
             style={{

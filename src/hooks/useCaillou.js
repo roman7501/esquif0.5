@@ -13,8 +13,8 @@ const useCaillou = () => {
     console.log("sInactiveve", isInactive);
   };
 
-  const locationCaillou = (getLoc) => {
-    getLoc();
+  const locationCaillou = () => {
+    console.log("ou est ce caillou ? ");
     setIsInactive(false);
     setDisplayText(false);
   };
