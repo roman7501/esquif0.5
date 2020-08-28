@@ -44,9 +44,9 @@ const Walk = ({ className }) => {
       opacity: 0,
     },
     visible: {
-      opacity: 0.7,
+      opacity: 1,
       transition: {
-        delay: 20,
+        delay: 60,
         duration: 2,
       },
     },
@@ -271,6 +271,19 @@ const Walk = ({ className }) => {
               exit="exit"
             >
               J’aimerais qu’il y ait quelqu’un Avec moi
+            </motion.p>
+          </AnimatePresence>
+        )}
+        {caillou === 6 && displayText === false && (
+          <AnimatePresence>
+            <motion.p
+              variants={penseesVariants}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+              className="pensee"
+            >
+              à ce moment j’ai traversé je suis sortie du chemin
             </motion.p>
           </AnimatePresence>
         )}
