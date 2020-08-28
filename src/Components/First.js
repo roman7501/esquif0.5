@@ -7,7 +7,7 @@ import dataLocations from "../data/dataLocations";
 const First = ({ className }) => {
   const { getLocation, distance } = useLocation(dataLocations.locations[0]);
   const [isClicked, setIsClicked] = useState(false);
-  const limitDistance = 50000;
+  const limitDistance = 500;
 
   const verifLocation = () => {
     setIsClicked(true);
