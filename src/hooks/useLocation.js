@@ -60,7 +60,7 @@ const useLocation = (position) => {
     const result = d * 1000;
     setTimeout(() => {
       setDistance(result);
-    }, 1000);
+    }, 5000);
   };
 
   // 1. Vérification si navigateur géolocalise

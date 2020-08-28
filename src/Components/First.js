@@ -18,7 +18,7 @@ const First = ({ className }) => {
       <p>Rends toi au banc près du Château de Vincennes</p>
       <div className="reponse">
         <button>
-          <a href="https://goo.gl/maps/EybnfkfP2xE1Aucs5" target="blank">
+          <a href="https://goo.gl/maps/RrRxHYeQK9Bx2KHaA'" target="blank">
             Où se trouve le banc ?
           </a>
         </button>
@@ -28,7 +28,7 @@ const First = ({ className }) => {
           <p>
             tu n'es pas au bon endroit, le banc se trouve à environ
             {Math.round(distance)}
-            &nbsp;mètres
+            &nbsp; mètres
           </p>
         )}
         {distance && distance < limitDistance && (
