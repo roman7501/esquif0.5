@@ -31,21 +31,14 @@ const Cailloux = ({
       pathLength: 1,
       transition: { duration: time, ease: "easeInOut" },
     },
+    exit: { opacity: 0, transition: { duration: 10 } },
   };
 
-  const fadeVariants = {
-    hidden: {
-      opacity: 0,
-    },
+  const pathVariants2 = {
+    hidden: { opacity: 0 },
     visible: {
-      opacity: 1,
-      transition: {
-        duration: 1,
-      },
-    },
-    exit: {
-      opacity: 0.4,
-      transition: { duration: 2 },
+      opacity: 0.7,
+      transition: { delay: 28, duration: 10, ease: "easeInOut" },
     },
   };
 
@@ -70,6 +63,7 @@ const Cailloux = ({
                 variants={svgVariants}
                 initial="hidden"
                 animate="visible"
+                exit="exit"
                 className="caillou"
                 xmlns="http://www.w3.org/2000/svg"
               >
@@ -81,47 +75,49 @@ const Cailloux = ({
               </motion.svg>
             </AnimatePresence>
           </div>
-          <AnimatePresence>
-            <motion.div
+          {isClicked && (
+            <div
               style={{
                 position: "fixed",
                 top: `${pY}px`,
                 right: `${pX}px`,
-                display: isClicked ? "block" : "none",
               }}
-              variants={fadeVariants}
-              initial="hidden"
-              animate="visible"
-              exit="exit"
               onClick={assombrirChemin}
             >
-              <motion.svg
-                style={{
-                  fill: "white",
-                }}
-                className="caillou"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <g id="Layer_2" data-name="Layer 2">
-                  <g id="Layer_1-2" data-name="Layer 1-2">
-                    <motion.path
-                      variants={pathVariants}
-                      d={pathSvg}
-                      transform="translate(0 0)"
-                    />
+              <AnimatePresence>
+                <motion.svg
+                  variants={svgVariants}
+                  initial="hidden"
+                  animate="visible"
+                  style={{
+                    fill: "white",
+                  }}
+                  className="caillou"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <g id="Layer_2" data-name="Layer 2">
+                    <g id="Layer_1-2" data-name="Layer 1-2">
+                      <motion.path
+                        variants={pathVariants2}
+                        d={pathSvg}
+                        transform="translate(0 0)"
+                      />
+                    </g>
                   </g>
-                </g>
-              </motion.svg>
-              <motion.p
-                className="titre"
-                variants={fadeVariants}
-                initial="hidden"
-                animate="visible"
-              >
-                {titre}
-              </motion.p>
-            </motion.div>
-          </AnimatePresence>
+                </motion.svg>
+              </AnimatePresence>
+              <AnimatePresence>
+                <motion.p
+                  className="titre"
+                  variants={pathVariants2}
+                  initial="hidden"
+                  animate="visible"
+                >
+                  {titre}
+                </motion.p>
+              </AnimatePresence>
+            </div>
+          )}
         </div>
       )}
     </div>
