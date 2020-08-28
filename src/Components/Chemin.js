@@ -39,7 +39,6 @@ const Chemin = ({
         position: "fixed",
         top: "-130px",
         right: "-100px",
-        background: "red",
         width: "500px",
         height: "900px",
         transform: " rotate(180deg) scale(0.40)",
