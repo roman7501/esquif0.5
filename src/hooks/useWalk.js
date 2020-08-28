@@ -27,11 +27,15 @@ const useWalk = () => {
   const assombrirChemin = () => {
     setIsDraw(false);
     // Actions sur caillou
-    setCaillou(caillou + 1);
     setDisplayText(true);
     setIsInactive(true);
     setIsClicked(false);
     console.log("caillou :", caillou);
+  };
+
+  const caillouSuivant = () => {
+    console.log("caillou suivant");
+    setCaillou(caillou + 1);
   };
 
   return {
@@ -45,6 +49,7 @@ const useWalk = () => {
     setIsInactive,
     isClicked,
     caillou,
+    caillouSuivant,
   };
 };
 

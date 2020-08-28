@@ -1,6 +1,9 @@
 import React from "react";
 import Cailloux from "./Cailloux";
 
+// carte
+import carte from "../image/carte.png";
+
 // Styles
 import styled from "styled-components";
 import { motion, AnimatePresence } from "framer-motion";
@@ -21,6 +24,7 @@ const Walk = ({ className }) => {
     setIsInactive,
     isClicked,
     caillou,
+    caillouSuivant,
   } = useWalk();
 
   const containerVariants = {
@@ -28,9 +32,9 @@ const Walk = ({ className }) => {
       opacity: 0,
     },
     visible: {
-      opacity: 0.6,
+      opacity: 1,
       transition: {
-        duration: 40,
+        duration: 7,
       },
     },
     exit: {
@@ -41,6 +45,7 @@ const Walk = ({ className }) => {
 
   return (
     <div className={className}>
+      <img src={carte} alt="carte" className="carte" />
       <Chemin
         isDraw={isDraw}
         initialStep={initialStep}
@@ -50,11 +55,11 @@ const Walk = ({ className }) => {
         className="chemin"
       />
       <div className="caillou">
-        {caillou >= 0 && (
+        {caillou === 0 && (
           <Cailloux
             className="caillou"
             index={0}
-            titre="le foyer"
+            titre="le foyer (environ 100 pas)"
             text=" "
             pathSvg="M3.3913,18.49C.8833,23.2136-.4716,28.8946,1.3161,33.9354c1.6568,4.6719,5.7292,8.0728,10,10.59A50.6126,50.6126,0,0,0,48.7285,49.99c4.9021-1.2126,9.9256-3.423,12.5972-7.7083,3.1483-5.05,2.2177-11.6489.1261-17.22C57.2864,13.9664,48.2237,1.6734,35.9818.6106,23.0132-.5152,9.4612,7.0569,3.3913,18.49Z"
             pY={100}
@@ -69,26 +74,39 @@ const Walk = ({ className }) => {
             time={5}
           />
         )}
-        {caillou === 1 && displayText === true && (
-          <AnimatePresence>
-            <motion.p
-              className="text"
-              variants={containerVariants}
-              initial="hidden"
-              animate="visible"
-              exit="exit"
-            >
-              Ici je fais un feu bonne idée avec les mains dessus et les joues
-              comme les pommes rouges comme sur le sapin oui je me souviens
-            </motion.p>
-          </AnimatePresence>
-        )}
-        {/* {caillou >= 0 && (
+
+        <AnimatePresence>
+          {caillou === 0 && displayText === true && (
+            <>
+              <motion.p
+                className="text"
+                variants={containerVariants}
+                initial="hidden"
+                animate="visible"
+                exit="exit"
+              >
+                Ici je fais un feu bonne idée avec les mains dessus et les joues
+                comme les pommes rouges comme sur le sapin oui je me souviens
+              </motion.p>
+              <motion.button
+                variants={containerVariants}
+                initial="hidden"
+                animate="visible"
+                exit="exit"
+                key="button"
+                onClick={caillouSuivant}
+              >
+                caillou suivant
+              </motion.button>
+            </>
+          )}
+        </AnimatePresence>
+        {caillou >= 1 && (
           <Cailloux
             index={1}
             pathSvg="M11.7159,2.3662C6.7394,3.8382,2.0612,7.3843.6811,12.3871c-1.9924,7.2223,3.2644,14.3534,8.7374,19.47A100.3741,100.3741,0,0,0,43.4328,52.7516c10.9112,3.983,24.3918,5.58,33.069-2.1418,7.63-6.79,8.5837-19.1239,3.8683-28.1841S66.3717,7.3732,56.6045,4.3857C43.7211.445,24.9158-1.5383,11.7159,2.3662Z"
-            pY={320}
-            pX={-150}
+            pY={0}
+            pX={0}
             titre="la clairère des 3 arbres"
             displayText={displayText}
             agrandirChemin={agrandirChemin}
@@ -113,7 +131,7 @@ const Walk = ({ className }) => {
             </motion.p>
           </AnimatePresence>
         )}
-        {caillou >= 0 && (
+        {/* {caillou >= 0 && (
           <Cailloux
             index={2}
             pathSvg="M14.6146,1.659c-4.7437-.407-10.241.3256-12.9224,4.26-3.4141,5.009-.206,11.8678,3.7978,16.4193a51.5261,51.5261,0,0,0,22.95,14.986c6.0071,1.9084,13.667,2.2038,17.4831-2.8126,2.5073-3.2958,2.4717-7.8028,2.3258-11.9414l-.3009-8.5315c-.1219-3.4572-.3333-7.1712-2.47-9.8939C39.6243-3.3115,22.7945,2.3606,14.6146,1.659Z"
@@ -325,5 +343,10 @@ export default styled(Walk)`
     font-style: normal;
     font-size: 14px;
     text-align: center;
+  }
+  .carte {
+    width: 100vw;
+    height: 100vh;
+    opacity: 0.8;
   }
 `;
