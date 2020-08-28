@@ -34,65 +34,69 @@ const Chemin = ({
   };
 
   return (
-    <div className={className}>
-      <motion.svg
-        style={{
-          fill: "none",
-          stroke: "white",
-          strokeMiterlimit: "10",
-          strokeWidth: "3px",
-          opacity: 1,
-        }}
-        variants={svgVariants}
-        initial="hidden"
-        animate="visible"
-        exit="exit"
-        className="chemin"
-        viewBox="0 0 336.7108 718.0803"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <g id="Layer_2" data-name="Layer 2">
-          <g id="Layer_1-2" data-name="Layer 1-2">
-            {isDraw === true && (
-              <AnimatePresence>
-                <motion.path
-                  variants={pathVariants}
-                  initial="hidden"
-                  animate="visible"
-                  exit="exit"
-                  d={chemin}
-                />
-              </AnimatePresence>
-            )}
-            {isDraw === false && (
-              <AnimatePresence>
-                <motion.path
-                  variants={pathVariants2}
-                  initial="hidden"
-                  animate="visible"
-                  exit="exit"
-                  d={chemin}
-                />
-              </AnimatePresence>
-            )}
+    <div
+      style={{
+        position: "fixed",
+        top: "-260px",
+        right: "-100px",
+        background: "red",
+        width: "500px",
+        transform: " rotate(180deg) scale(0.5)",
+      }}
+    >
+      <AnimatePresence>
+        <motion.svg
+          style={{
+            fill: "none",
+            stroke: "white",
+            strokeMiterlimit: "10",
+            strokeWidth: "3px",
+            opacity: 1,
+          }}
+          variants={svgVariants}
+          initial="hidden"
+          animate="visible"
+          exit="exit"
+          className="chemin"
+          viewBox="0 0 318.1839 706.7776"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <g id="Layer_2" data-name="Layer 2">
+            <g id="Layer_1-2" data-name="Layer 1-2">
+              {isDraw === true && (
+                <AnimatePresence>
+                  <motion.path
+                    variants={pathVariants}
+                    initial="hidden"
+                    animate="visible"
+                    exit="exit"
+                    d={chemin}
+                  />
+                </AnimatePresence>
+              )}
+              {isDraw === false && (
+                <AnimatePresence>
+                  <motion.path
+                    variants={pathVariants2}
+                    initial="hidden"
+                    animate="visible"
+                    exit="exit"
+                    d={chemin}
+                  />
+                </AnimatePresence>
+              )}
+            </g>
           </g>
-        </g>
-      </motion.svg>
+        </motion.svg>
+      </AnimatePresence>
+      {/* <button onClick={assombrirChemin}>assombrir</button>
+      <button onClick={agrandirChemin}>agrandir</button> */}
     </div>
   );
 };
 
 export default styled(Chemin)`
-  .chemin {
-    max-height: 90vh;
-  }
   button {
     margin-left: 20px;
-  }
-  .path2 {
-    position: fixed;
-    top: 100px;
-    background: red;
-    transform: translateX(100);
   }
 `;

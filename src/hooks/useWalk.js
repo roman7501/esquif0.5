@@ -21,6 +21,7 @@ const useWalk = () => {
     // Actions sur caillou
     setDisplayText(false);
     setIsClicked(true);
+    console.log("caillou :", caillou);
   };
 
   const assombrirChemin = () => {
@@ -29,7 +30,8 @@ const useWalk = () => {
     setCaillou(caillou + 1);
     setDisplayText(true);
     setIsInactive(true);
-    console.log("chemin assombri", "caillou :", caillou);
+    setIsClicked(false);
+    console.log("caillou :", caillou);
   };
 
   return {
@@ -40,6 +42,7 @@ const useWalk = () => {
     assombrirChemin,
     displayText,
     isInactive,
+    setIsInactive,
     isClicked,
     caillou,
   };

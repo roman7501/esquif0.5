@@ -15,8 +15,11 @@ const Cailloux = ({
   displayText,
   agrandirChemin,
   isInactive,
+  setIsInactive,
   isClicked,
   time,
+  index,
+  caillou,
 }) => {
   // Effets motions
   const svgVariants = {};
@@ -48,87 +51,84 @@ const Cailloux = ({
 
   return (
     <div className={className}>
-      <div
-        onClick={() => agrandirChemin()}
-        style={{
-          position: "fixed",
-          top: `${pY}px`,
-          right: `${pX}px`,
-          display: isClicked && "none",
-          pointerEvents: isInactive ? "none" : "auto",
-        }}
-      >
-        <AnimatePresence>
-          <motion.svg
+      {index >= caillou && (
+        <div>
+          <div
+            onClick={() => agrandirChemin()}
             style={{
-              fill: "none",
+              position: "fixed",
+              top: `${pY}px`,
+              right: `${pX}px`,
+              display: isClicked && "none",
             }}
-            variants={svgVariants}
-            initial="hidden"
-            animate="visible"
-            className="caillou"
-            xmlns="http://www.w3.org/2000/svg"
           >
-            <g id="Layer_2" data-name="Layer 2">
-              <g id="Layer_1-2" data-name="Layer 1-2">
-                <motion.path variants={pathVariants} d={pathSvg} />
-              </g>
-            </g>
-          </motion.svg>
-        </AnimatePresence>
-      </div>
-      <AnimatePresence>
-        <motion.div
-          style={{
-            position: "fixed",
-            top: `${pY}px`,
-            right: `${pX}px`,
-            display: isClicked ? "block" : "none",
-            pointerEvents: isInactive ? "none" : "auto",
-          }}
-          variants={fadeVariants}
-          initial="hidden"
-          animate="visible"
-          exit="exit"
-          onClick={assombrirChemin}
-        >
-          <motion.svg
-            style={{
-              fill: "white",
-            }}
-            className="caillou"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <g id="Layer_2" data-name="Layer 2">
-              <g id="Layer_1-2" data-name="Layer 1-2">
-                <motion.path
-                  variants={pathVariants}
-                  d={pathSvg}
-                  transform="translate(0 0)"
-                />
-              </g>
-            </g>
-          </motion.svg>
-          <motion.p
-            className="titre"
-            variants={fadeVariants}
-            initial="hidden"
-            animate="visible"
-          >
-            {titre}
-          </motion.p>
-        </motion.div>
-      </AnimatePresence>
+            <AnimatePresence>
+              <motion.svg
+                style={{
+                  fill: "none",
+                }}
+                variants={svgVariants}
+                initial="hidden"
+                animate="visible"
+                className="caillou"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g id="Layer_2" data-name="Layer 2">
+                  <g id="Layer_1-2" data-name="Layer 1-2">
+                    <motion.path variants={pathVariants} d={pathSvg} />
+                  </g>
+                </g>
+              </motion.svg>
+            </AnimatePresence>
+          </div>
+          <AnimatePresence>
+            <motion.div
+              style={{
+                position: "fixed",
+                top: `${pY}px`,
+                right: `${pX}px`,
+                display: isClicked ? "block" : "none",
+              }}
+              variants={fadeVariants}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+              onClick={assombrirChemin}
+            >
+              <motion.svg
+                style={{
+                  fill: "white",
+                }}
+                className="caillou"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g id="Layer_2" data-name="Layer 2">
+                  <g id="Layer_1-2" data-name="Layer 1-2">
+                    <motion.path
+                      variants={pathVariants}
+                      d={pathSvg}
+                      transform="translate(0 0)"
+                    />
+                  </g>
+                </g>
+              </motion.svg>
+              <motion.p
+                className="titre"
+                variants={fadeVariants}
+                initial="hidden"
+                animate="visible"
+              >
+                {titre}
+              </motion.p>
+            </motion.div>
+          </AnimatePresence>
+        </div>
+      )}
     </div>
   );
 };
 
 export default styled(Cailloux)`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  opacity: 0.5;
   .text {
     margin-top: 300px;
     align-items: center;
