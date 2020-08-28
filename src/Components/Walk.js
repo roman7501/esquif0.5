@@ -30,7 +30,7 @@ const Walk = ({ className }) => {
     visible: {
       opacity: 0.6,
       transition: {
-        duration: 120,
+        duration: 40,
       },
     },
     exit: {
@@ -125,7 +125,7 @@ const Walk = ({ className }) => {
             isInactive={isInactive}
             isClicked={isClicked}
             caillou={caillou}
-            time={80}
+            time={40}
           />
         )}
         {caillou === 2 && displayText === true && (
@@ -168,7 +168,7 @@ const Walk = ({ className }) => {
             isInactive={isInactive}
             isClicked={isClicked}
             caillou={caillou}
-            time={100}
+            time={50}
           />
         )}
         {caillou === 3 && displayText === true && (
@@ -300,7 +300,7 @@ const Walk = ({ className }) => {
             isInactive={isInactive}
             isClicked={isClicked}
             caillou={caillou}
-            time={90}
+            time={40}
           />
         )}
         {caillou === 7 && displayText === true && (
@@ -331,7 +331,7 @@ const Walk = ({ className }) => {
             isInactive={isInactive}
             isClicked={isClicked}
             caillou={caillou}
-            time={70}
+            time={40}
           />
         )}
         {caillou === 8 && displayText === true && (
@@ -361,7 +361,7 @@ const Walk = ({ className }) => {
             isInactive={isInactive}
             isClicked={isClicked}
             caillou={caillou}
-            time={90}
+            time={40}
           />
         )}
       </div>
