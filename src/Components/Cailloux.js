@@ -38,7 +38,7 @@ const Cailloux = ({
     hidden: { opacity: 0 },
     visible: {
       opacity: 0.7,
-      transition: { delay: 80, duration: 10, ease: "easeInOut" },
+      transition: { delay: 25, duration: 10, ease: "easeInOut" },
     },
   };
 
