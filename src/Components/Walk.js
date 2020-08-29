@@ -211,7 +211,7 @@ const Walk = ({ className }) => {
                   <br />
                 </p>
                 <p style={{ opacity: 0.4 }}>
-                  (le 1er caillou est à environ 100 pas)
+                  - le premier caillou est à environ 100 pas -
                 </p>
               </motion.div>
             </>
