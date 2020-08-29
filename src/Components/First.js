@@ -9,7 +9,7 @@ const First = ({ className }) => {
   const { getLocation, distance } = useLocation(dataLocations.locations[0]);
   const [isClicked, setIsClicked] = useState(false);
   const [onMobile, setOnMobile] = useState();
-  const limitDistance = 5000;
+  const limitDistance = 500;
 
   const verifMobile = () => {
     var isMobile = {
