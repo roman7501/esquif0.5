@@ -31,9 +31,10 @@ const Listen = ({ className }) => {
           exit="exit"
           className="ecoute"
         >
-          <p>écoute moi sur le banc</p>
           <Link to="/cailloux">
-            <motion.div whileTap={{ scale: 0.97, opacity: 0.5 }}>▶</motion.div>
+            <motion.button whileTap={{ scale: 0.97, opacity: 0.5 }}>
+              écoute-moi sur le banc
+            </motion.button>
           </Link>
         </motion.div>
       </AnimatePresence>
@@ -66,9 +67,9 @@ export default styled(Listen)`
     background: transparent;
     border: none;
     color: white;
+    border-bottom: 2px solid grey;
     padding: 1em;
     outline: transparent;
-    outline: none;
     cursor: pointer;
   }
 `;

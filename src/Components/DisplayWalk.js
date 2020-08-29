@@ -1,7 +1,6 @@
 import React from "react";
 import Walk from "./Walk";
 import { motion } from "framer-motion";
-import useWalk from "../hooks/useWalk";
 
 // carte
 import carte from "../image/carte.png";
@@ -9,7 +8,6 @@ import carte from "../image/carte.png";
 import styled from "styled-components";
 
 const DisplayWalk = ({ className }) => {
-  const { isPlay } = useWalk();
   const fadeCarteVariants = {
     hidden: {
       opacity: 0,
@@ -17,8 +15,8 @@ const DisplayWalk = ({ className }) => {
     visible: {
       opacity: 1,
       transition: {
-        delay: 1,
-        duration: 0,
+        delay: 3,
+        duration: 3,
       },
     },
     exit: {
@@ -33,13 +31,12 @@ const DisplayWalk = ({ className }) => {
       initial="hidden"
       animate="visible"
       exit="exit"
-      // style={{ backgroundImage: `url(${carte})`, backgroundSize: "cover" }}
     >
-      {/* <audio
+      <audio
         autoPlay={true}
-        src="https://firebasestorage.googleapis.com/v0/b/esquif-f53eb.appspot.com/o/debut2.mp3?alt=media&token=1f523b5b-b4fa-43c2-afd5-84a79abbb5ad"
-      ></audio> */}
-      {!isPlay && <img src={carte} alt="carte" className="carte" />}
+        src="https://firebasestorage.googleapis.com/v0/b/esquif-f53eb.appspot.com/o/Debut3.mp3?alt=media&token=74a9c766-e00a-43f6-9041-8b3337e9ea9e"
+      ></audio>
+      <img src={carte} alt="carte" className="carte" />
 
       <Walk className="walk" />
     </motion.div>

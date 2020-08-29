@@ -44,12 +44,12 @@ const Chemin = ({
         <motion.svg
           style={{
             fill: "none",
-            stroke: isPlay ? "blue" : "white",
+            stroke: isPlay ? "#9ABDFF" : "white",
             strokeMiterlimit: "10",
             strokeWidth: "3px",
             opacity: 1,
             transform: "scale(1) translateX(-7px) translateY(12px)",
-            transition: "all 50s",
+            transition: "all 150s",
           }}
           variants={svgVariants}
           initial="hidden"

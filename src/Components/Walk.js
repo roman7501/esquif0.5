@@ -29,7 +29,7 @@ const Walk = ({ className }) => {
   useEffect(() => {
     setTimeout(() => {
       agrandirChemin();
-    }, 10);
+    }, 145000);
     // eslint-disable-next-line
   }, []);
 
@@ -40,6 +40,23 @@ const Walk = ({ className }) => {
     visible: {
       opacity: 1,
       transition: {
+        duration: 4,
+      },
+    },
+    exit: {
+      opacity: 0,
+      transition: { duration: 2 },
+    },
+  };
+
+  const indicationVariants = {
+    hidden: {
+      opacity: 0,
+    },
+    visible: {
+      opacity: 1,
+      transition: {
+        delay: 60,
         duration: 4,
       },
     },
@@ -83,6 +100,40 @@ const Walk = ({ className }) => {
     },
   };
 
+  const finalVariants = {
+    hidden: {
+      opacity: 0,
+    },
+    visible: {
+      opacity: 1,
+      transition: {
+        delay: 10,
+        duration: 100,
+      },
+    },
+    exit: {
+      opacity: 0,
+      transition: { duration: 2 },
+    },
+  };
+
+  const finalTextVariants = {
+    hidden: {
+      opacity: 0,
+    },
+    visible: {
+      opacity: 1,
+      transition: {
+        delay: 170,
+        duration: 5,
+      },
+    },
+    exit: {
+      opacity: 0,
+      transition: { duration: 2 },
+    },
+  };
+
   return (
     <>
       <div className={className}>
@@ -95,6 +146,20 @@ const Walk = ({ className }) => {
           assombrirChemin={assombrirChemin}
           isPlay={isPlay}
         />
+
+        {isPlay && (
+          <motion.div
+            className="final"
+            variants={finalVariants}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+          >
+            <motion.p variants={finalTextVariants}>
+              fin du premier esquif
+            </motion.p>
+          </motion.div>
+        )}
         {caillou === 0 && (
           <Cailloux
             className="caillou"
@@ -111,14 +176,14 @@ const Walk = ({ className }) => {
             setIsInactive={setIsInactive}
             isClicked={isClicked}
             caillou={caillou}
-            time={5}
+            time={180}
           />
         )}
         {caillou === 0 && displayText === false && (
           <>
             <motion.p
               className="indication"
-              variants={containerVariants}
+              variants={indicationVariants}
               initial="hidden"
               animate="visible"
               exit="exit"
@@ -175,7 +240,7 @@ const Walk = ({ className }) => {
             isInactive={isInactive}
             isClicked={isClicked}
             caillou={caillou}
-            time={40}
+            time={5}
           />
         )}
         <AnimatePresence>
@@ -222,7 +287,7 @@ const Walk = ({ className }) => {
             isInactive={isInactive}
             isClicked={isClicked}
             caillou={caillou}
-            time={50}
+            time={5}
           />
         )}
         {caillou === 2 && displayText === true && (
@@ -468,7 +533,7 @@ const Walk = ({ className }) => {
           />
         )}
         <AnimatePresence>
-          {caillou === 0 && displayText === true && (
+          {caillou === 8 && displayText === true && (
             <motion.div
               className="text-final"
               variants={containerVariants}
@@ -498,7 +563,7 @@ const Walk = ({ className }) => {
         {isPlay && (
           <audio
             autoPlay={true}
-            src="https://firebasestorage.googleapis.com/v0/b/esquif-f53eb.appspot.com/o/mer2.mp3?alt=media&token=bf262630-7c5c-4a09-9a32-8cae1035a4b3"
+            src="https://firebasestorage.googleapis.com/v0/b/esquif-f53eb.appspot.com/o/Mer3.mp3?alt=media&token=a5f64bd7-2b2c-4c56-b540-db42a0756a75"
           ></audio>
         )}
       </div>
@@ -551,6 +616,7 @@ export default styled(Walk)`
   .chemin {
     height: 500px;
     width: 300px;
+    position: absolute;
   }
   .indication {
     position: fixed;
@@ -572,5 +638,25 @@ export default styled(Walk)`
     justify-content: center;
     align-items: center;
     flex-direction: column;
+  }
+  .final {
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 3em;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: #303030;
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+  }
+  .final p {
+    color: #9abdff;
   }
 `;

@@ -10,6 +10,8 @@ body{
     background: black;
     color: white;
     margin-top:0;
+    padding: 0;
+    
 }
 *{
     margin: 0;
