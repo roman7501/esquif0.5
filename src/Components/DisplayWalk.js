@@ -15,8 +15,8 @@ const DisplayWalk = ({ className }) => {
     visible: {
       opacity: 1,
       transition: {
-        delay: 3,
-        duration: 3,
+        delay: 0,
+        duration: 20,
       },
     },
     exit: {

@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import Cailloux from "./Cailloux";
+import Banc from "./Banc";
 
 // Styles
 import styled from "styled-components";
@@ -24,12 +25,15 @@ const Walk = ({ className }) => {
     caillouSuivant,
     sonFinal,
     isPlay,
+    isBanc,
+    setIsBanc,
   } = useWalk();
 
   useEffect(() => {
     setTimeout(() => {
       agrandirChemin();
-    }, 145000);
+      setIsBanc(false);
+    }, 150000);
     // eslint-disable-next-line
   }, []);
 
@@ -56,7 +60,7 @@ const Walk = ({ className }) => {
     visible: {
       opacity: 1,
       transition: {
-        delay: 60,
+        delay: 155,
         duration: 4,
       },
     },
@@ -108,7 +112,7 @@ const Walk = ({ className }) => {
       opacity: 1,
       transition: {
         delay: 10,
-        duration: 100,
+        duration: 140,
       },
     },
     exit: {
@@ -137,6 +141,18 @@ const Walk = ({ className }) => {
   return (
     <>
       <div className={className}>
+        <AnimatePresence>
+          {isBanc && (
+            <motion.div
+              variants={containerVariants}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+            >
+              <Banc />
+            </motion.div>
+          )}
+        </AnimatePresence>
         <Chemin
           className="chemin"
           isDraw={isDraw}
@@ -146,7 +162,6 @@ const Walk = ({ className }) => {
           assombrirChemin={assombrirChemin}
           isPlay={isPlay}
         />
-
         {isPlay && (
           <motion.div
             className="final"
@@ -176,24 +191,34 @@ const Walk = ({ className }) => {
             setIsInactive={setIsInactive}
             isClicked={isClicked}
             caillou={caillou}
-            time={180}
+            time={165}
           />
         )}
-        {caillou === 0 && displayText === false && (
-          <>
-            <motion.p
-              className="indication"
-              variants={indicationVariants}
-              initial="hidden"
-              animate="visible"
-              exit="exit"
-            >
-              Une fois à l'endroit du caillou, appuie dessus
-            </motion.p>
-          </>
-        )}
         <AnimatePresence>
-          {caillou === 2 && displayText === true && (
+          {caillou === 0 && displayText === false && (
+            <>
+              <motion.div
+                className="indication"
+                variants={indicationVariants}
+                initial="hidden"
+                animate="visible"
+                exit="exit"
+              >
+                <p>
+                  suis le chemin et va au premier caillou
+                  <br />
+                  <br />
+                  <br />
+                </p>
+                <p style={{ opacity: 0.4 }}>
+                  (le 1er caillou est à environ 100 pas)
+                </p>
+              </motion.div>
+            </>
+          )}
+        </AnimatePresence>
+        <AnimatePresence>
+          {caillou === 0 && displayText === true && (
             <motion.div
               className="text"
               variants={containerVariants}
@@ -222,7 +247,7 @@ const Walk = ({ className }) => {
                 key="button"
                 onClick={caillouSuivant}
               >
-                caillou suivant
+                aller caillou suivant
               </motion.button>
             </motion.div>
           )}
@@ -240,7 +265,7 @@ const Walk = ({ className }) => {
             isInactive={isInactive}
             isClicked={isClicked}
             caillou={caillou}
-            time={5}
+            time={14}
           />
         )}
         <AnimatePresence>
@@ -259,7 +284,10 @@ const Walk = ({ className }) => {
                 C’est tra&nbsp;nquille <br />
                 ici L’&nbsp;herbe est <br />
                 douce sous les pieds <br />
-                et il y a de la place pour jouer
+                et il y a &nbsp;de la &nbsp;place pour joueret on <br />
+                peut se <br />
+                suspendre où on veut la &nbsp;&nbsp;&nbsp;tête en bas alors on
+                voit le ciel comme la terre
               </motion.p>
               <motion.button
                 variants={buttonVariants}
@@ -269,7 +297,7 @@ const Walk = ({ className }) => {
                 key="button"
                 onClick={caillouSuivant}
               >
-                caillou suivant
+                aller au caillou suivant
               </motion.button>
             </motion.div>
           )}
@@ -287,35 +315,36 @@ const Walk = ({ className }) => {
             isInactive={isInactive}
             isClicked={isClicked}
             caillou={caillou}
-            time={5}
+            time={14}
           />
         )}
-        {caillou === 2 && displayText === true && (
-          <motion.div
-            className="text"
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-            exit="exit"
-          >
-            <motion.p>
-              Il a des boutons lui si je les pique est-ce qu’ils explosent et la
-              sève coule mais c’est rugueux même si j’appuie fort ça ne marche
-              pas je lui donne un coup de pied
-            </motion.p>
-            <motion.button
-              variants={buttonVariants}
+        <AnimatePresence>
+          {caillou === 2 && displayText === true && (
+            <motion.div
+              className="text"
+              variants={containerVariants}
               initial="hidden"
               animate="visible"
               exit="exit"
-              key="button"
-              onClick={caillouSuivant}
             >
-              caillou suivant
-            </motion.button>
-          </motion.div>
-        )}
-
+              <motion.p>
+                Il a des boutons lui si je les pique est-ce qu’ils explosent et
+                la sève coule mais c’est rugueux même si j’appuie fort ça ne
+                marche pas je lui donne un coup de pied
+              </motion.p>
+              <motion.button
+                variants={buttonVariants}
+                initial="hidden"
+                animate="visible"
+                exit="exit"
+                key="button"
+                onClick={caillouSuivant}
+              >
+                aller au caillou suivant
+              </motion.button>
+            </motion.div>
+          )}
+        </AnimatePresence>
         {caillou === 3 && (
           <Cailloux
             index={4}
@@ -329,33 +358,35 @@ const Walk = ({ className }) => {
             isInactive={isInactive}
             isClicked={isClicked}
             caillou={caillou}
-            time={40}
+            time={10}
           />
-        )}
-        {caillou === 3 && displayText === true && (
-          <motion.div
-            className="text"
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-            exit="exit"
-          >
-            <motion.p>
-              Ils ont planté une graine ce matin je vais le voir grandir
-              celui-là je le connaîtrais par coeur J’aurais tout vu
-            </motion.p>
-            <motion.button
-              variants={buttonVariants}
+        )}{" "}
+        <AnimatePresence>
+          {caillou === 3 && displayText === true && (
+            <motion.div
+              className="text"
+              variants={containerVariants}
               initial="hidden"
               animate="visible"
               exit="exit"
-              key="button"
-              onClick={caillouSuivant}
             >
-              caillou suivant
-            </motion.button>
-          </motion.div>
-        )}
+              <motion.p>
+                Ils ont planté une graine ce matin je vais le voir grandir
+                celui-là je le connaîtrais par coeur J’aurais tout vu
+              </motion.p>
+              <motion.button
+                variants={buttonVariants}
+                initial="hidden"
+                animate="visible"
+                exit="exit"
+                key="button"
+                onClick={caillouSuivant}
+              >
+                aller au caillou suivant
+              </motion.button>
+            </motion.div>
+          )}
+        </AnimatePresence>
         {caillou === 4 && (
           <Cailloux
             index={3}
@@ -369,32 +400,35 @@ const Walk = ({ className }) => {
             isInactive={isInactive}
             isClicked={isClicked}
             caillou={caillou}
-            time={20}
+            time={14}
           />
         )}
-        {caillou === 4 && displayText === true && (
-          <motion.div
-            className="text"
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-            exit="exit"
-          >
-            <motion.p>
-              Il a un diamant rouge Tiens Comme un rubis d’un roi Je me souviens
-            </motion.p>
-            <motion.button
-              variants={buttonVariants}
+        <AnimatePresence>
+          {caillou === 4 && displayText === true && (
+            <motion.div
+              className="text"
+              variants={containerVariants}
               initial="hidden"
               animate="visible"
               exit="exit"
-              key="button"
-              onClick={caillouSuivant}
             >
-              caillou suivant
-            </motion.button>
-          </motion.div>
-        )}
+              <motion.p>
+                Il a un diamant rouge Tiens Comme un rubis d’un roi Je me
+                souviens
+              </motion.p>
+              <motion.button
+                variants={buttonVariants}
+                initial="hidden"
+                animate="visible"
+                exit="exit"
+                key="button"
+                onClick={caillouSuivant}
+              >
+                aller au caillou suivant
+              </motion.button>
+            </motion.div>
+          )}
+        </AnimatePresence>
         {caillou === 5 && (
           <Cailloux
             index={5}
@@ -408,30 +442,32 @@ const Walk = ({ className }) => {
             isInactive={isInactive}
             isClicked={isClicked}
             caillou={caillou}
-            time={60}
+            time={14}
           />
         )}
-        {caillou === 5 && displayText === true && (
-          <motion.div
-            className="text"
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-            exit="exit"
-          >
-            <motion.p>J’aimerais qu’il y ait quelqu’un Avec moi</motion.p>
-            <motion.button
-              variants={buttonVariants}
+        <AnimatePresence>
+          {caillou === 5 && displayText === true && (
+            <motion.div
+              className="text"
+              variants={containerVariants}
               initial="hidden"
               animate="visible"
               exit="exit"
-              key="button"
-              onClick={caillouSuivant}
             >
-              caillou suivant
-            </motion.button>
-          </motion.div>
-        )}
+              <motion.p>J’aimerais qu’il y ait quelqu’un Avec moi</motion.p>
+              <motion.button
+                variants={buttonVariants}
+                initial="hidden"
+                animate="visible"
+                exit="exit"
+                key="button"
+                onClick={caillouSuivant}
+              >
+                aller au caillou suivant
+              </motion.button>
+            </motion.div>
+          )}
+        </AnimatePresence>
         {caillou === 6 && (
           <Cailloux
             index={6}
@@ -445,34 +481,43 @@ const Walk = ({ className }) => {
             isInactive={isInactive}
             isClicked={isClicked}
             caillou={caillou}
-            time={40}
+            time={14}
           />
         )}
-        {caillou === 6 && displayText === true && (
-          <motion.div
-            className="text"
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-            exit="exit"
-          >
-            <motion.p>
-              Ils coupent et ils assemblent C’est nouveau c’est quoi Et ça C’est
-              quoi Il y a un garçon qui monte dessus  Ça bascule Je veux rester
-              ici toute ma vie
-            </motion.p>
-            <motion.button
-              variants={buttonVariants}
+        <AnimatePresence>
+          {caillou === 6 && displayText === true && (
+            <motion.div
+              className="text"
+              variants={containerVariants}
               initial="hidden"
               animate="visible"
               exit="exit"
-              key="button"
-              onClick={caillouSuivant}
             >
-              caillou suivant
-            </motion.button>
-          </motion.div>
-        )}
+              <motion.p>
+                Ils coupent et ils assemblent C’est nouveau c’est quoi Et ça
+                <br />
+                <br />
+                C’est quoi <br />
+                Il y a un garçon <br />
+                <br />
+                qui monte <br />
+                dessus 
+                <br />
+                <br /> Ça bascule Je veux rester ici toute ma vie
+              </motion.p>
+              <motion.button
+                variants={buttonVariants}
+                initial="hidden"
+                animate="visible"
+                exit="exit"
+                key="button"
+                onClick={caillouSuivant}
+              >
+                aller au caillou suivant
+              </motion.button>
+            </motion.div>
+          )}
+        </AnimatePresence>
         {caillou === 7 && (
           <Cailloux
             index={7}
@@ -486,7 +531,7 @@ const Walk = ({ className }) => {
             isInactive={isInactive}
             isClicked={isClicked}
             caillou={caillou}
-            time={40}
+            time={14}
           />
         )}
         <AnimatePresence>
@@ -499,8 +544,12 @@ const Walk = ({ className }) => {
               exit="exit"
             >
               <motion.p>
-                M’enfonce Confortable M’étale Dessins avec les doigts Une
-                couronne un château des visages un cadeau un tourbillon
+                M’enfonce Confortable <br />
+                M’étale <br />
+                Dessins <br />
+                <br />
+                avec les doigts <br />
+                Des visages un tourbillon
               </motion.p>
               <motion.button
                 variants={buttonVariants}
@@ -510,12 +559,11 @@ const Walk = ({ className }) => {
                 key="button"
                 onClick={caillouSuivant}
               >
-                caillou suivant
+                aller au caillou suivant
               </motion.button>
             </motion.div>
           )}
         </AnimatePresence>
-
         {caillou === 8 && (
           <Cailloux
             index={8}
@@ -529,7 +577,7 @@ const Walk = ({ className }) => {
             isInactive={isInactive}
             isClicked={isClicked}
             caillou={caillou}
-            time={40}
+            time={17}
           />
         )}
         <AnimatePresence>
@@ -541,7 +589,7 @@ const Walk = ({ className }) => {
               animate="visible"
               exit="exit"
             >
-              <motion.p
+              <motion.div
                 variants={buttonFinalVariants}
                 className="button-final"
                 initial="hidden"
@@ -549,13 +597,12 @@ const Walk = ({ className }) => {
                 exit="exit"
                 key="button"
               >
-                écoute moi en marchant vers le château
-              </motion.p>
-              <motion.div
-                onClick={sonFinal}
-                whileTap={{ scale: 0.97, opacity: 0.5 }}
-              >
-                ▶
+                <motion.button
+                  onClick={sonFinal}
+                  whileTap={{ scale: 0.97, opacity: 0.5 }}
+                >
+                  écoute moi en marchant vers le château
+                </motion.button>
               </motion.div>
             </motion.div>
           )}
@@ -563,7 +610,7 @@ const Walk = ({ className }) => {
         {isPlay && (
           <audio
             autoPlay={true}
-            src="https://firebasestorage.googleapis.com/v0/b/esquif-f53eb.appspot.com/o/Mer3.mp3?alt=media&token=a5f64bd7-2b2c-4c56-b540-db42a0756a75"
+            src="https://firebasestorage.googleapis.com/v0/b/esquif-f53eb.appspot.com/o/Mer4.mp3?alt=media&token=07535836-6ca4-40b0-8128-4be45d0de505"
           ></audio>
         )}
       </div>
@@ -613,6 +660,7 @@ export default styled(Walk)`
     margin-top: 50px;
     opacity: 0.6;
   }
+
   .chemin {
     height: 500px;
     width: 300px;
@@ -657,6 +705,16 @@ export default styled(Walk)`
     left: 0;
   }
   .final p {
+    margin-top: 424px;
     color: #9abdff;
+  }
+  .button-final button {
+    background: transparent;
+    border: none;
+    color: white;
+    border-bottom: 2px solid grey;
+    padding: 1em;
+    outline: transparent;
+    cursor: pointer;
   }
 `;

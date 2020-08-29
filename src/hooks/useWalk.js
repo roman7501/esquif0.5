@@ -12,6 +12,8 @@ const useWalk = () => {
   const [isClicked, setIsClicked] = useState(false);
   // Etat son fin
   const [isPlay, setIsPlay] = useState(false);
+  // Affichage banc
+  const [isBanc, setIsBanc] = useState(true);
 
   const steps = [0.1, 0.1, 0.08, 0.036, 0.03, 0.09, 0.14, 0.08, 0.09, 0.4];
 
@@ -61,6 +63,8 @@ const useWalk = () => {
     caillouSuivant,
     sonFinal,
     isPlay,
+    isBanc,
+    setIsBanc,
   };
 };
 

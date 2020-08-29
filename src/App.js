@@ -11,6 +11,7 @@ import ListCailloux from "./Components/ListCailloux";
 import First from "./Components/First";
 import ListenFin from "./Components/ListenFin";
 import Chemin from "./Components/Chemin";
+import Banc from "./Components/Banc";
 import DisplayWalk from "./Components/DisplayWalk";
 
 function App({ className }) {
@@ -36,6 +37,9 @@ function App({ className }) {
         </Route>
         <Route path="/chemin">
           <Chemin />
+        </Route>
+        <Route path="/banc">
+          <Banc />
         </Route>
         <Route path="/">
           <Intro />

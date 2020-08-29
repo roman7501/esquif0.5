@@ -23,7 +23,7 @@ const Cailloux = ({
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: { delay: time, duration: 2, ease: "easeInOut" },
+      transition: { delay: time, duration: 3.5, ease: "easeInOut" },
     },
     exit: {
       opacity: 0,

@@ -34,7 +34,9 @@ const First = ({ className }) => {
       animate="visible"
       exit="exit"
     >
-      <p class="indication">Rends toi au banc près du Château de Vincennes</p>
+      <p className="indication">
+        Rends toi au banc près du Château de Vincennes
+      </p>
 
       <div className="google">
         <motion.button whileTap={{ scale: 0.97, opacity: 0.5 }}>
