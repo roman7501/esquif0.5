@@ -9,6 +9,7 @@ const Chemin = ({
   nextStep,
   agrandirChemin,
   assombrirChemin,
+  isPlay,
 }) => {
   const svgVariants = {};
 
@@ -20,7 +21,7 @@ const Chemin = ({
     visible: {
       opacity: 0.7,
       pathLength: nextStep,
-      transition: { delay: 0, duration: 1, ease: "easeInOut" },
+      transition: { delay: 2, duration: 1, ease: "easeInOut" },
     },
   };
 
@@ -43,11 +44,12 @@ const Chemin = ({
         <motion.svg
           style={{
             fill: "none",
-            stroke: "white",
+            stroke: isPlay ? "blue" : "white",
             strokeMiterlimit: "10",
             strokeWidth: "3px",
             opacity: 1,
             transform: "scale(1) translateX(-7px) translateY(12px)",
+            transition: "all 50s",
           }}
           variants={svgVariants}
           initial="hidden"

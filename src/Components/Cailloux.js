@@ -22,8 +22,8 @@ const Cailloux = ({
   const svgVariants = {
     hidden: { opacity: 0 },
     visible: {
-      opacity: 0.7,
-      transition: { delay: 10, duration: 1, ease: "easeInOut" },
+      opacity: 1,
+      transition: { delay: 0, duration: 1, ease: "easeInOut" },
     },
     exit: {
       opacity: 0,
@@ -34,7 +34,7 @@ const Cailloux = ({
   const pathVariants = {
     hidden: { opacity: 0.7, pathLength: 0 },
     visible: {
-      opacity: 0.7,
+      opacity: 1,
       pathLength: 1,
       transition: { duration: 1, ease: "easeInOut" },
     },
@@ -44,7 +44,7 @@ const Cailloux = ({
   const pathVariants2 = {
     hidden: { opacity: 0 },
     visible: {
-      opacity: 0.7,
+      opacity: 1,
       transition: { delay: 0, duration: 1, ease: "easeInOut" },
     },
   };
@@ -54,13 +54,13 @@ const Cailloux = ({
       <AnimatePresence>
         <div>
           <motion.svg
-            onClick={() => agrandirChemin()}
             style={{
               fill: "none",
-              transform: "scale(0.2)",
+              transform: "scale(0.05)",
               position: "absolute",
               top: `${pY}px`,
               right: `${pX}px`,
+              pointerEvents: isInactive ? "none" : "auto",
             }}
             variants={svgVariants}
             initial="hidden"
@@ -91,7 +91,7 @@ const Cailloux = ({
               style={{
                 fill: "white",
                 position: "absolute",
-                transform: "scale(0.2)",
+                transform: "scale(0.08)",
                 top: `${pY}px`,
                 right: `${pX}px`,
               }}
@@ -109,9 +109,8 @@ const Cailloux = ({
               className="titre"
               style={{
                 position: "absolute",
-                top: "420px",
+                top: "450px",
                 right: "140px",
-                fontSize: "12px",
               }}
             >
               {titre}
@@ -126,13 +125,13 @@ const Cailloux = ({
 export default styled(Cailloux)`
   .caillou {
     stroke: #f6f6f6;
-    stroke-width: 2;
+    stroke-width: 10;
     stroke-miterlimit: 10;
   }
   .titre {
-    font-family: "Helvetica", "Arial", sans-serif;
     font-weight: 400;
     font-style: normal;
     font-size: 14px;
+    opacity: 1;
   }
 `;

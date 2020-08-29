@@ -10,8 +10,10 @@ const useWalk = () => {
   const [displayText, setDisplayText] = useState(false);
   const [isInactive, setIsInactive] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
+  // Etat son fin
+  const [isPlay, setIsPlay] = useState(false);
 
-  const steps = [1, 0.1, 0.07, 0.048, 0.02, 0.09, 0.14, 0.12, 0.09, 0.4];
+  const steps = [0.1, 0.1, 0.08, 0.036, 0.03, 0.09, 0.14, 0.08, 0.09, 0.4];
 
   const agrandirChemin = () => {
     setInitialStep(nextStep);
@@ -21,7 +23,7 @@ const useWalk = () => {
     // Actions sur caillou
     setDisplayText(false);
     setIsClicked(true);
-    console.log("caillou :", caillou);
+    console.log("clair caillou :", caillou);
   };
 
   const assombrirChemin = () => {
@@ -30,12 +32,19 @@ const useWalk = () => {
     setDisplayText(true);
     setIsInactive(true);
     setIsClicked(false);
-    console.log("caillou :", caillou);
+    console.log("sombre caillou :", caillou);
   };
 
   const caillouSuivant = () => {
     console.log("caillou suivant");
     setCaillou(caillou + 1);
+    setIsInactive(false);
+    agrandirChemin();
+  };
+
+  const sonFinal = () => {
+    setIsPlay(true);
+    caillouSuivant();
   };
 
   return {
@@ -50,6 +59,8 @@ const useWalk = () => {
     isClicked,
     caillou,
     caillouSuivant,
+    sonFinal,
+    isPlay,
   };
 };
 
