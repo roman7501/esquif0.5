@@ -11,7 +11,7 @@ const useWalk = () => {
   const [isInactive, setIsInactive] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
 
-  const steps = [0.13, 0.1, 0.07, 0.048, 0.02, 0.09, 0.14, 0.12, 0.09, 0.4];
+  const steps = [1, 0.1, 0.07, 0.048, 0.02, 0.09, 0.14, 0.12, 0.09, 0.4];
 
   const agrandirChemin = () => {
     setInitialStep(nextStep);

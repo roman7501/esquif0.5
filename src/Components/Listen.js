@@ -1,12 +1,9 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { motion, AnimatePresence } from "framer-motion";
-import Walk from "./Walk";
+import { Link } from "react-router-dom";
 
 const Listen = ({ className }) => {
-  // const [isPlay, setIsPlay] = useState(false);
-
   const fadeVariants = {
     hidden: {
       opacity: 0,
@@ -14,36 +11,33 @@ const Listen = ({ className }) => {
     visible: {
       opacity: 1,
       transition: {
-        delay: 30,
-        duration: 30,
+        delay: 0,
+        duration: 1,
       },
     },
     exit: {
-      opacity: 0.4,
-      transition: { duration: 2 },
+      opacity: 0,
+      transition: { duration: 3 },
     },
   };
 
   return (
-    <motion.div className={className} variants={fadeVariants}>
-      {/* <button className="ecoute" onClick={() => setIsPlay(true)}>
-        écoute moi sur le banc
-      </button> */}
-      {/* {isPlay && ( */}
-      <div>
-        {/* <audio
-            autoPlay={true}
-            src="https://firebasestorage.googleapis.com/v0/b/esquif-f53eb.appspot.com/o/debut2.mp3?alt=media&token=1f523b5b-b4fa-43c2-afd5-84a79abbb5ad"
-          ></audio> */}
-        <Link to="/cailloux">
-          <AnimatePresence>
-            <div className="walk">
-              <Walk />
-            </div>
-          </AnimatePresence>
-        </Link>
-      </div>
-      {/* )} */}
+    <motion.div className={className}>
+      <AnimatePresence>
+        <motion.div
+          variants={fadeVariants}
+          initial="hidden"
+          animate="visible"
+          exit="exit"
+          className="ecoute"
+        >
+          <p>écoute moi sur le banc</p>
+          <Link to="/cailloux">
+            <motion.div whileTap={{ scale: 0.97, opacity: 0.5 }}>▶</motion.div>
+          </Link>
+        </motion.div>
+      </AnimatePresence>
+      <AnimatePresence></AnimatePresence>
     </motion.div>
   );
 };
@@ -60,16 +54,21 @@ export default styled(Listen)`
   flex-direction: column;
   .ecoute {
     position: fixed;
-    bottom: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  .walk {
+    min-height: 100vh;
   }
   button {
     background: transparent;
     border: none;
     color: white;
-  }
-  .walk {
-    background: red;
-    min-height: 100vh;
-    width: 100px;
+    padding: 1em;
+    outline: transparent;
+    outline: none;
+    cursor: pointer;
   }
 `;

@@ -23,7 +23,7 @@ const Cailloux = ({
     hidden: { opacity: 0 },
     visible: {
       opacity: 0.7,
-      transition: { duration: 3, ease: "easeInOut" },
+      transition: { delay: 10, duration: 1, ease: "easeInOut" },
     },
     exit: {
       opacity: 0,
@@ -109,7 +109,7 @@ const Cailloux = ({
               className="titre"
               style={{
                 position: "absolute",
-                top: "520px",
+                top: "420px",
                 right: "140px",
                 fontSize: "12px",
               }}
@@ -124,23 +124,12 @@ const Cailloux = ({
 };
 
 export default styled(Cailloux)`
-  .text {
-    margin-top: 300px;
-    align-items: center;
-    font-family: ten-oldstyle, serif;
-    font-weight: 400;
-    font-style: normal;
-    font-size: 14px;
-    width: 90%;
-    text-align: center;
-  }
   .caillou {
     stroke: #f6f6f6;
     stroke-width: 2;
     stroke-miterlimit: 10;
   }
   .titre {
-    margin-top: -90px;
     font-family: "Helvetica", "Arial", sans-serif;
     font-weight: 400;
     font-style: normal;

@@ -95,6 +95,7 @@ const useLocation = (position) => {
     getLocation,
     distance,
     location,
+    setDistance,
   };
 };
 
