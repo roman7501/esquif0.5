@@ -52,34 +52,35 @@ const Cailloux = ({
   return (
     <div className={className}>
       <AnimatePresence>
-        <motion.svg
-          onClick={() => agrandirChemin()}
-          style={{
-            fill: "none",
-            transform: "scale(0.2)",
-            position: "absolute",
-            top: `${pY}px`,
-            right: `${pX}px`,
-          }}
-          variants={svgVariants}
-          initial="hidden"
-          animate="visible"
-          exit="exit"
-          className="caillou"
-          viewBox="-15 -15 100 100"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <g id="Layer_2" data-name="Layer 2">
-            <g id="Layer_1-2" data-name="Layer 1-2">
-              <motion.path variants={pathVariants} d={pathSvg} />
+        <div>
+          <motion.svg
+            onClick={() => agrandirChemin()}
+            style={{
+              fill: "none",
+              transform: "scale(0.2)",
+              position: "absolute",
+              top: `${pY}px`,
+              right: `${pX}px`,
+            }}
+            variants={svgVariants}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+            className="caillou"
+            viewBox="-15 -15 100 100"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <g id="Layer_2" data-name="Layer 2">
+              <g id="Layer_1-2" data-name="Layer 1-2">
+                <motion.path variants={pathVariants} d={pathSvg} />
+              </g>
             </g>
-          </g>
-        </motion.svg>
+          </motion.svg>
+        </div>
       </AnimatePresence>
       <AnimatePresence>
         {isClicked && (
           <motion.div
-            style={{ height: "100vh" }}
             variants={svgVariants}
             initial="hidden"
             animate="visible"
@@ -107,9 +108,10 @@ const Cailloux = ({
             <motion.p
               className="titre"
               style={{
-                position: "relative",
-                top: `${pY + 278}px`,
-                right: `${pX - 140}px`,
+                position: "absolute",
+                top: "520px",
+                right: "140px",
+                fontSize: "12px",
               }}
             >
               {titre}

@@ -11,6 +11,10 @@ body{
     color: white;
     margin-top:0;
 }
+*{
+    margin: 0;
+    padding: 0;
+}
 `;
 
 export default Global;

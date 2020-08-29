@@ -36,12 +36,11 @@ const Chemin = ({
   return (
     <div
       style={{
-        position: "fixed",
-        top: "-130px",
-        right: "-100px",
-        width: "500px",
-        height: "900px",
-        transform: " rotate(180deg) scale(0.40)",
+        height: "500px",
+        width: "300px",
+        position: "relative",
+        border: "1px solid orange",
+        transform: " rotate(180deg) scale(1)",
       }}
     >
       <AnimatePresence>

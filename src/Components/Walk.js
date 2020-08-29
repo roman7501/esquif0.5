@@ -1,9 +1,6 @@
 import React from "react";
 import Cailloux from "./Cailloux";
 
-// carte
-import carte from "../image/carte.png";
-
 // Styles
 import styled from "styled-components";
 import { motion, AnimatePresence } from "framer-motion";
@@ -44,17 +41,16 @@ const Walk = ({ className }) => {
   };
 
   return (
-    <div className={className}>
-      <img src={carte} alt="carte" className="carte" />
-      <Chemin
-        isDraw={isDraw}
-        initialStep={initialStep}
-        nextStep={nextStep}
-        agrandirChemin={agrandirChemin}
-        assombrirChemin={assombrirChemin}
-        className="chemin"
-      />
-      <div className="caillou">
+    <>
+      <div className={className}>
+        <Chemin
+          className="chemin"
+          isDraw={isDraw}
+          initialStep={initialStep}
+          nextStep={nextStep}
+          agrandirChemin={agrandirChemin}
+          assombrirChemin={assombrirChemin}
+        />
         {caillou === 0 && (
           <Cailloux
             className="caillou"
@@ -328,11 +324,15 @@ const Walk = ({ className }) => {
           />
         )} */}
       </div>
-    </div>
+    </>
   );
 };
 
 export default styled(Walk)`
+  height: 500px;
+  width: 300px;
+  position: absolute;
+  border: 1px solid green;
   .text {
     position: fixed;
     top: 40%;
@@ -344,9 +344,11 @@ export default styled(Walk)`
     font-size: 14px;
     text-align: center;
   }
-  .carte {
-    width: 100vw;
-    height: 100vh;
-    opacity: 0.8;
+  .chemin {
+    height: 500px;
+    width: 300px;
+    position: absolute;
+    z-index: -2;
+    border: 1px solid red;
   }
 `;

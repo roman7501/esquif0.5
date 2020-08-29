@@ -3,7 +3,6 @@ import "./App.css";
 import { Route, Switch, useLocation } from "react-router-dom";
 import Intro from "./Components/Intro";
 import Listen from "./Components/Listen";
-import Walk from "./Components/Walk";
 
 // style
 import styled from "styled-components";
@@ -12,6 +11,7 @@ import ListCailloux from "./Components/ListCailloux";
 import First from "./Components/First";
 import ListenFin from "./Components/ListenFin";
 import Chemin from "./Components/Chemin";
+import DisplayWalk from "./Components/DisplayWalk";
 
 function App({ className }) {
   const location = useLocation();
@@ -26,7 +26,7 @@ function App({ className }) {
           <Listen />
         </Route>
         <Route path="/cailloux">
-          <Walk />
+          <DisplayWalk />
         </Route>
         <Route path="/listedescailloux">
           <ListCailloux />
