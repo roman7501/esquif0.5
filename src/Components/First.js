@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import useLocation from "../hooks/useLocation";
-import dataLocations from "../data/dataLocations";
+// import useLocation from "../hooks/useLocation";
+// import dataLocations from "../data/dataLocations";
 import { motion, AnimatePresence } from "framer-motion";
 
 const First = ({ className }) => {
-  const { getLocation, distance } = useLocation(dataLocations.locations[0]);
+  // const { getLocation, distance } = useLocation(dataLocations.locations[0]);
   const [isClicked, setIsClicked] = useState(false);
   const [onMobile, setOnMobile] = useState();
-  const limitDistance = 500;
+  // const limitDistance = 500;
 
   const verifMobile = () => {
     var isMobile = {
@@ -53,7 +53,7 @@ const First = ({ className }) => {
 
   const verifLocation = () => {
     setIsClicked(true);
-    getLocation();
+    // getLocation();
   };
 
   const fadeVariants = {
@@ -101,7 +101,7 @@ const First = ({ className }) => {
                 j'y suis
               </motion.button>
             )}
-            {isClicked && !distance && (
+            {/* {isClicked && !distance && (
               <motion.p
                 className="resultat"
                 variants={fadeVariants}
@@ -111,8 +111,8 @@ const First = ({ className }) => {
               >
                 vérification de ton emplacement...
               </motion.p>
-            )}
-            <AnimatePresence key={2}>
+            )} */}
+            {/* <AnimatePresence key={2}>
               {isClicked && distance && distance > limitDistance && (
                 <motion.div
                   className="resultat"
@@ -135,9 +135,9 @@ const First = ({ className }) => {
                   </motion.button>
                 </motion.div>
               )}
-            </AnimatePresence>
+            </AnimatePresence> */}
             <AnimatePresence>
-              {distance && distance < limitDistance && (
+              {isClicked && (
                 <motion.div
                   className="resultat"
                   variants={fadeVariants}
