@@ -227,17 +227,19 @@ const Walk = ({ className }) => {
               exit="exit"
             >
               <motion.p>
-                Ici je fais un feu bonne
+                Ici je fais un feu bonne idée <br />
                 <br />
-                <br />
-                <br />
-                &nbsp; idée <br />
                 &nbsp; &nbsp; &nbsp;avec les mains &nbsp; &nbsp;dessus et les
                 joues comme &nbsp; &nbsp; &nbsp; &nbsp;
                 <br />
+                <br />
                 les pommes rouges comme sur <br />
                 <br />
-                le &nbsp; &nbsp; &nbsp;sapin oui &nbsp; &nbsp;je me souviens
+                le &nbsp; &nbsp; &nbsp;sapin <br />
+                <br />
+                oui <br />
+                <br />
+                &nbsp; &nbsp;je me souviens
               </motion.p>
               <motion.button
                 variants={buttonVariants}
@@ -281,13 +283,18 @@ const Walk = ({ className }) => {
                 J’aime bien <br />
                 ici <br />
                 <br />
-                C’est tra&nbsp;nquille <br />
-                ici L’&nbsp;herbe est <br />
-                douce sous les pieds <br />
-                et il y a &nbsp;de la &nbsp;place pour joueret on <br />
+                <br />
+                C’est &nbsp;&nbsp;tranquille <br />
+                ici <br />
+                Il y a &nbsp;de la &nbsp;place pour jouer et on <br />
                 peut se <br />
-                suspendre où on veut la &nbsp;&nbsp;&nbsp;tête en bas alors on
-                voit le ciel comme la terre
+                suspendre où <br />
+                on &nbsp;&nbsp; veut la &nbsp;&nbsp;&nbsp;tête &nbsp;&nbsp;en
+                bas &nbsp;&nbsp;alors on voit le &nbsp;&nbsp;ciel comme
+                &nbsp;&nbsp;&nbsp;la
+                <br />
+                <br />
+                &nbsp;&nbsp;terre
               </motion.p>
               <motion.button
                 variants={buttonVariants}
@@ -328,9 +335,16 @@ const Walk = ({ className }) => {
               exit="exit"
             >
               <motion.p>
-                Il a des boutons lui si je les pique est-ce qu’ils explosent et
-                la sève coule mais c’est rugueux même si j’appuie fort ça ne
-                marche pas je lui donne un coup de pied
+                Il &nbsp;&nbsp;a &nbsp;&nbsp;des &nbsp;&nbsp;boutons
+                &nbsp;&nbsp;&nbsp;&nbsp;lui &nbsp;&nbsp;&nbsp;si &nbsp;&nbsp;je
+                les &nbsp;&nbsp;&nbsp;pique&nbsp;&nbsp;&nbsp; est&nbsp;-&nbsp;ce
+                &nbsp; &nbsp;qu’ils&nbsp;&nbsp;explosent&nbsp;&nbsp; et
+                &nbsp;&nbsp;la &nbsp;&nbsp;sève &nbsp;&nbsp;coule
+                &nbsp;mais&nbsp; c’est &nbsp;&nbsp;&nbsp;rugueux
+                &nbsp;&nbsp;même &nbsp;&nbsp;si &nbsp;j’&nbsp;appuie &nbsp;fort
+                &nbsp;&nbsp;ça &nbsp;&nbsp;ne marche&nbsp; pas&nbsp;&nbsp;&nbsp;
+                je &nbsp;&nbsp;lui&nbsp; donne&nbsp;&nbsp; un &nbsp;&nbsp;coup
+                &nbsp; &nbsp; &nbsp;de &nbsp;&nbsp;pied
               </motion.p>
               <motion.button
                 variants={buttonVariants}
@@ -360,7 +374,7 @@ const Walk = ({ className }) => {
             caillou={caillou}
             time={10}
           />
-        )}{" "}
+        )}
         <AnimatePresence>
           {caillou === 3 && displayText === true && (
             <motion.div
@@ -371,8 +385,20 @@ const Walk = ({ className }) => {
               exit="exit"
             >
               <motion.p>
-                Ils ont planté une graine ce matin je vais le voir grandir
-                celui-là je le connaîtrais par coeur J’aurais tout vu
+                Ils ont planté une graine &nbsp;ce matin <br />
+                <br />
+                je vais&nbsp;&nbsp; le &nbsp;voir &nbsp;&nbsp;grandir <br />
+                <br />
+                &nbsp;&nbsp;&nbsp;&nbsp;celui-là 
+                <br />
+                <br />
+                <br />
+                je &nbsp;le &nbsp;&nbsp;connaîtrais &nbsp;&nbsp;par
+                &nbsp;&nbsp;coeur <br />
+                <br />
+                <br />
+                <br />
+                J’aurais tout vu
               </motion.p>
               <motion.button
                 variants={buttonVariants}
@@ -413,8 +439,19 @@ const Walk = ({ className }) => {
               exit="exit"
             >
               <motion.p>
-                Il a un diamant rouge Tiens Comme un rubis d’un roi Je me
-                souviens
+                Il a un diamant rouge <br />
+                <br />
+                <br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Tiens 
+                <br />
+                <br />
+                <br />
+                Comme un rubis &nbsp;&nbsp;&nbsp;d’un roi <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                &nbsp;&nbsp;&nbsp;Je me souviens
               </motion.p>
               <motion.button
                 variants={buttonVariants}
@@ -454,7 +491,16 @@ const Walk = ({ className }) => {
               animate="visible"
               exit="exit"
             >
-              <motion.p>J’aimerais qu’il y ait quelqu’un Avec moi</motion.p>
+              <motion.p>
+                &nbsp;&nbsp;&nbsp;J’aimerais
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;qu’il&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                y
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ait&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                quelqu’ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;un <br />
+                <br />
+                <br />
+                &nbsp;&nbsp;&nbsp;Avec &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;moi
+              </motion.p>
               <motion.button
                 variants={buttonVariants}
                 initial="hidden"
@@ -494,16 +540,22 @@ const Walk = ({ className }) => {
               exit="exit"
             >
               <motion.p>
-                Ils coupent et ils assemblent C’est nouveau c’est quoi Et ça
+                Ils coupent et ils assemblent <br />
+                <br />
+                C’est&nbsp; nouveau <br />
+                c’est &nbsp;quoi
                 <br />
                 <br />
-                C’est quoi <br />
-                Il y a un garçon <br />
+                <br /> Et &nbsp;ça
                 <br />
-                qui monte <br />
-                dessus 
                 <br />
-                <br /> Ça bascule Je veux rester ici toute ma vie
+                C’est &nbsp;quoi <br />
+                Il y a un garçon qui monte dessus 
+                <br />
+                <br /> Ça &nbsp;&nbsp;bascule <br />
+                <br />
+                <br />
+                &nbsp;&nbsp;&nbsp;&nbsp;Je veux rester ici toute ma vie
               </motion.p>
               <motion.button
                 variants={buttonVariants}
@@ -544,11 +596,12 @@ const Walk = ({ className }) => {
               exit="exit"
             >
               <motion.p>
-                M’enfonce Confortable <br />
-                M’étale <br />
-                Dessins <br />
+                M’enfonce &nbsp;&nbsp;Confortable <br /> <br />
+                M’&nbsp;étale <br />
                 <br />
-                avec les doigts <br />
+                Dessins&nbsp;&nbsp; avec&nbsp;&nbsp; les &nbsp;doigts <br />
+                <br />
+                <br />
                 Des visages un tourbillon
               </motion.p>
               <motion.button
