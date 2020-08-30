@@ -23,7 +23,11 @@ const Cailloux = ({
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: { delay: time, duration: 3.5, ease: "easeInOut" },
+      transition: {
+        delay: time,
+        duration: 3.5,
+        ease: "easeInOut",
+      },
     },
     exit: {
       opacity: 0,
@@ -50,17 +54,20 @@ const Cailloux = ({
   };
 
   return (
-    <div className={className}>
+    <div className={className} style={{}}>
       <AnimatePresence>
-        <div>
+        <div
+          style={{
+            transform: `translate(${pX}px, ${pY}px)`,
+          }}
+        >
           <motion.svg
             style={{
               fill: "none",
               transform: "scale(0.05)",
               position: "absolute",
-              top: `${pY}px`,
-              right: `${pX}px`,
               pointerEvents: isInactive ? "none" : "auto",
+              opacity: caillou === 0 && "0",
             }}
             variants={svgVariants}
             initial="hidden"
@@ -86,25 +93,28 @@ const Cailloux = ({
             animate="visible"
             exit="exit"
           >
-            <svg
-              onClick={assombrirChemin}
+            <div
               style={{
-                fill: "white",
-                position: "absolute",
-                transform: "scale(0.08)",
-                top: `${pY}px`,
-                right: `${pX}px`,
+                transform: `translate(${pX}px, ${pY}px)`,
               }}
-              className="caillou2"
-              viewBox="-15 -15 100 100"
-              xmlns="http://www.w3.org/2000/svg"
             >
-              <g id="Layer_2" data-name="Layer 2">
-                <g id="Layer_1-2" data-name="Layer 1-2">
-                  <motion.path variants={pathVariants2} d={pathSvg} />
+              <motion.svg
+                onClick={assombrirChemin}
+                style={{
+                  fill: "white",
+                  transform: "scale(0.05)",
+                  position: "absolute",
+                }}
+                viewBox="-15 -15 100 100"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g id="Layer_2" data-name="Layer 2">
+                  <g id="Layer_1-2" data-name="Layer 1-2">
+                    <motion.path variants={pathVariants2} d={pathSvg} />
+                  </g>
                 </g>
-              </g>
-            </svg>
+              </motion.svg>
+            </div>
             <motion.p
               className="titre"
               style={{
