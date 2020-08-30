@@ -260,7 +260,7 @@ const Walk = ({ className }) => {
             pathSvg="M11.7159,2.3662C6.7394,3.8382,2.0612,7.3843.6811,12.3871c-1.9924,7.2223,3.2644,14.3534,8.7374,19.47A100.3741,100.3741,0,0,0,43.4328,52.7516c10.9112,3.983,24.3918,5.58,33.069-2.1418,7.63-6.79,8.5837-19.1239,3.8683-28.1841S66.3717,7.3732,56.6045,4.3857C43.7211.445,24.9158-1.5383,11.7159,2.3662Z"
             pY={130}
             pX={75}
-            titre="la clairère des 3 arbres"
+            titre="la clairière des 3 arbres"
             displayText={displayText}
             agrandirChemin={agrandirChemin}
             assombrirChemin={assombrirChemin}
